@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Web Dungeon VR</title>
+    <meta name="description" content="Web Dungeon VR - A-Frame">
+    <script src="https://aframe.io/releases/0.6.1/aframe.min.js"></script>
+    <script src="https://cdn.rawgit.com/donmccurdy/aframe-extras/v3.8.6/dist/aframe-extras.min.js"></script>
+    <link rel="stylesheet" href="style.css">
+  </head>
+  <body>
+    <a-scene false" fog="type: exponential; color: #2A324C; density: 0.4;">
+      <a-assets timeout="5000">
+        <img src="assets/suelo2.jpg" id="suelo">
+        <img src="assets/pared.jpg" id="pared">
+        <img src="assets/HUD_0.png" id="hud0">
+        <img src="assets/HUD_1.png" id="hud1">
+        <img src="assets/HUD_2.png" id="hud2">
+        <img src="assets/HUD_3.png" id="hud3">
+        <img src="assets/HUD_4.png" id="hud4">
+        <img src="assets/HUD_5.png" id="hud5">
+        <img src="assets/Objective.png" id="objective">
+        <img src="assets/Win.png" id="winner">
+        <a-asset-item id="llave" src="assets/key/devils-key.dae">
+        </a-asset-item>
+        <audio src="assets/Key.mp3" id="soundKey"></audio>
+        <audio src="assets/Step.wav" id="soundStep"></audio>
+        <audio src="assets/Gathering_Darkness.mp3" id="soundAmbient" autoplay=""></audio>
+      </a-assets>
+      <a-entity id="jugador" camera universal-controls position="0 1.6 0" rotation="0 90 0" kinematic-body> 
+        <a-cursor postion="0 0 -1" fuse="true" fuse-timeout="800"
+        geometry="primitive: ring; radiusOuter: 0.033; radiusInner: 0.020;"  material="color: #f6ce30; shader: flat"> </a-cursor>
+        <a-text id="score" value="" width="4" color="black" font="mozillavr" position="0 -.5 -1" anchor="center" align="center"></a-text>
+        <a-image id="hud" src="#hud0" position="0 0.5 -0.8" width="2" height="0.1" visible="false"></a-image>
+        <a-image id="mission" src="#objective" position="0 0 -0.8" width="2" height="0.24" visible="false"></a-image>
+        <a-image id="win" src="#winner" position="0 0 -0.8" width="1" height="0.24" visible="false"></a-image>
+        <a-sound src="#soundAmbient" autoplay="true" loop="true" volume="0.5"></a-sound>
+        <a-sound src="#soundKey" id="keySound" volume="2"></a-sound>
+        <a-sound src="#soundStep" id="stepSound" volume="0.5"></a-sound>
+      </a-entity>
+      <a-entity id="muros">
+      </a-entity>
+      <a-entity id="premios">
+      </a-entity>
+      <a-grid src="#suelo" static-body></a-grid>
+      <a-box position="0 4 -7.5" width="60" depth="60" height="0.2" material="src: #suelo; repeat: 60 60"></a-box>
+    </a-scene>
+    <script src="app.js">
+    </script>
+  </body>
+</html>
